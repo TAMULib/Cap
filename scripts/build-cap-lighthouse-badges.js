@@ -43,7 +43,7 @@ const createBadges = resultList => {
   });
 }
 
-const logSoreList = scoreList => {
+const logScoreList = scoreList => {
   console.log('Finished generating report');
   console.log('Results:');
   scoreList.forEach(s => {
@@ -52,15 +52,27 @@ const logSoreList = scoreList => {
 }
 
 const createGhPagesDir = () => {
+  const targetPath = 'target';
+  const ghPagesPath = `src/main/resources/gh-pages`;
+  const targetGhPagesPath = `${targetPath}/gh-pages`;
   fs.ensureDir(ghPagesPath);
-  const targetPath = 'target/';
   fs.ensureDir(targetPath);
-  fs.ensureDir(`${lighthousePath}`);
-  fs.copy(`./${ghPagesPath}/index.html`, `${targetPath}/gh-pages/index.html`);
-  fs.copy(`./${lighthousePath}/`, `${targetPath}/gh-pages/audit/`);
-  fs.copy(`./${lighthousePath}/assets/`, `${targetPath}/gh-pages/audit/assets/`);
-  fs.copy(`${targetPath}/generated-docs/`, `${targetPath}/gh-pages/api-docs/`);
-}
+
+  fs.copy(`${targetPath}/generated-docs/`, `${targetGhPagesPath}/api-docs/`, err => {
+    if (err) return console.error(' \n Unable to copy generated-docs  to : ',`${targetGhPagesPath}/api-docs/` , '\n', err);
+    console.log(`Copied generated-docs to ${targetGhPagesPath}/api-docs/ !`);
+  });
+
+  fs.copy(`./${ghPagesPath}/index.html`, `${targetGhPagesPath}/index.html`, err => {
+    if (err) return console.error(' \n Unable to copy src index file  to : ',`${targetGhPagesPath}/index.html` , '\n', err);
+    console.log(`Copied index file to ${targetGhPagesPath}/index.html !`);
+  });
+
+  fs.copy(`./${ghPagesPath}/audit/`, `${targetGhPagesPath}/audit/`, err => {
+    if (err) return console.error(' \n Unable to copy src audit  to : ',`${targetGhPagesPath}/audit/` , '\n', err);
+    console.log(`Copied audit to ${targetGhPagesPath}/audit/ !`);
+  });
+};
 
 if(fs.existsSync(lighthouseCiPath)) {
   fs.ensureDir(`${lighthousePath}`);
@@ -71,7 +83,7 @@ if(fs.existsSync(lighthouseCiPath)) {
   const scoreList = createScoreList(jsonReport);
   createReport(htmlReportPath);
   createBadges(scoreList);
-  logSoreList(scoreList);
+  logScoreList(scoreList);
   createGhPagesDir();
 
 } else {

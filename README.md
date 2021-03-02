@@ -1,10 +1,10 @@
 [![Build Status](https://github.com/TAMULib/CAP/workflows/Build/badge.svg)](https://github.com/TAMULib/CAP/actions?query=workflow%3ABuild)
 [![Coverage Status](https://coveralls.io/repos/github/TAMULib/CAP/badge.svg)](https://coveralls.io/github/TAMULib/CAP)
-<!--- [![Performance](https://tamulib.github.io/CAP/audit/assets/performance.svg)](https://tamulib.github.io/CAP/audit/#performance)
+[![Performance](https://tamulib.github.io/CAP/audit/assets/performance.svg)](https://tamulib.github.io/CAP/audit/#performance)
 [![Accessibility](https://tamulib.github.io/CAP/audit/assets/accessibility.svg)](https://tamulib.github.io/CAP/audit/#accessibility)
 [![Best Practices](https://tamulib.github.io/CAP/audit/assets/best-practices.svg)](https://tamulib.github.io/CAP/audit/#best-practices)
 [![SEO](https://tamulib.github.io/CAP/audit/assets/seo.svg)](https://tamulib.github.io/CAP/audit/#seo)
-[![Progressive Web App](https://tamulib.github.io/CAP/audit/assets/pwa.svg)](https://tamulib.github.io/CAP/audit/#pwa) --->
+[![Progressive Web App](https://tamulib.github.io/CAP/audit/assets/pwa.svg)](https://tamulib.github.io/CAP/audit/#pwa)
 
 # CAP
 
